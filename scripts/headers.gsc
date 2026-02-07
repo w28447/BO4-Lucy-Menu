@@ -40,6 +40,7 @@
 #include scripts\zm_common\zm_laststand.gsc;
 #include scripts\core_common\laststand_shared.gsc;
 #include scripts\zm_common\zm_bgb.gsc;
+#include scripts\zm_common\zm_melee_weapon;
 
 #namespace clientids_shared;
 
