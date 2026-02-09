@@ -10,6 +10,15 @@ GiveSvalinnGuard()
 
 GiveClientWeapon(WeaponName, player)
 {
+    if(zm_loadout::is_melee_weapon(getweapon(WeaponName)) || WeaponName == "stake_knife")
+    {
+        player takeweapon( player zm_loadout::get_player_melee_weapon());
+        w_current = player.currentweapon;
+        player zm_melee_weapon::award_melee_weapon( WeaponName );
+        player zm_weapons::give_build_kit_weapon(getweapon(WeaponName));
+        player switchtoweapon( w_current );
+        return;
+    }
     self zm_weapons::give_build_kit_weapon(getweapon(WeaponName));
     self switchtoweapon(getweapon(WeaponName));
     wait .1;

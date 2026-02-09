@@ -381,7 +381,7 @@ runMenuIndex(menu)
         break;
         case "Upgraded AR":
             self addMenu(menu, "Upgraded Assault Rifles");
-            for(t=0;t<level._AssaultNames.size;t++)
+            for(t=0;t<level._UpgAssaultNames.size;t++)
                 self addOpt("Give "+level._UpgAssaultNames[t], &GiveClientWeapon, level._AssaultStrings[t]+"_upgraded", self);
         break;
         case "Upgraded SMG":
@@ -398,7 +398,7 @@ runMenuIndex(menu)
         case "Upgraded LMG":
             self addMenu(menu, "Upgraded LMGs");
             for(z=0;z<level._UpgLMGNames.size;z++)
-                self addOpt(level._UpgSMGNames[z], &GiveClientWeapon, level._LMGStrings[z]+"_upgraded", self);
+                self addOpt(level._UpgLMGNames[z], &GiveClientWeapon, level._LMGStrings[z]+"_upgraded", self);
         break;
         case "Upgraded SR":
             self addMenu(menu, "Upgraded Snipers");
@@ -421,29 +421,37 @@ runMenuIndex(menu)
                 self addOpt(level._UpgSpecialNames[t],&GiveClientWeapon,level._UpgSpecialStrings[t],self);
             switch(BO4GetMap()){
                 case "Voyage":
-                    for(z=0;z<level._VoyageWeaps.size;z++)
-                        self addOpt(level._VoyageWeapNames[t], &GiveClientWeapon, level._VoyageWeaps[t]+"_upgraded");
+                    for(z=0;z<level._VoyageWeaps.size - 1;z++)
+                        self addOpt(level._VoyageWeapNames[z], &GiveClientWeapon, level._VoyageWeaps[z]+"_upgraded", self);
                     self addOpt("Svalinn Guard", &GiveSvalinnGuard);
                 break;
                 case "Blood":
                     for(z=0;z<level._UpgBloodNames.size;z++)
-                        self addOpt(level._UpgBloodNames[t], &GiveClientWeapon, level._UpgBloodWeaps[t], self);
+                        self addOpt(level._UpgBloodNames[z], &GiveClientWeapon, level._UpgBloodWeaps[z], self);
+                    for(r=0;r<level._MapWeapsAether.size - 1;r++) 
+                        self addOpt(level._UpgMapWeapsAetherNames[r],&GiveClientWeapon,level._MapWeapsAether[r]+"_upgraded",self);
                 break;
                 case "AE":
                     for(z=0;z<level._AEWeaps.size - 2;z++)
                         self addOpt(level._AEWeapNames[z], &GiveClientWeapon, level._AEWeaps[z]+"_upgraded",self);
                 break;
                 case "Tag":
-                    for(z=0;z<level._TagWeapNames.size - 2;z++)
-                        self addOpt(level._UpgTagWeapNames[z], &GiveClientWeapon, level._TagWeaps[z], self);
+                    for(z=0;z<level._UpgTagWeapNames.size;z++)
+                        self addOpt(level._UpgTagWeapNames[z], &GiveClientWeapon, level._UpgTagWeaps[z], self);
+                    for(r=0;r<level._MapWeapsAether.size - 1;r++) 
+                        self addOpt(level._UpgMapWeapsAetherNames[r],&GiveClientWeapon,level._MapWeapsAether[r]+"_upgraded",self);
                 break;
                 case "AO":
-                    for(z=0;z<level._AOWeaps.size - 1;z++)
-                        self addOpt(level._AOWeapNames[z],&GiveClientWeapon, level._UpgAOWeaps[t],self);
+                    for(z=0;z<level._UpgAOWeaps.size - 2;z++)
+                        self addOpt(level._AOWeapNames[z],&GiveClientWeapon, level._UpgAOWeaps[z],self);
+                    for(r=0;r<level._MapWeapsAether.size - 1;r++) 
+                        self addOpt(level._UpgMapWeapsAetherNames[r],&GiveClientWeapon,level._MapWeapsAether[r]+"_upgraded",self);
                 break;
                 case "Classified": 
-                    for(z=0;z<level._MapWeapsAether.size;z++)
-                        self addOpt(level._UpgClassWeaps[z], &GiveClientWeapon, level._UpgClassWeaps[z]+"_upgraded", self);
+                    for(z=0;z<level._UpgClassWeaps.size;z++)
+                        self addOpt(level._UpgClassWeapNames[z], &GiveClientWeapon, level._UpgClassWeaps[z]+"_upgraded", self);
+                    for(r=0;r<level._MapWeapsAether.size - 1;r++) 
+                        self addOpt(level._UpgMapWeapsAetherNames[r],&GiveClientWeapon,level._MapWeapsAether[r]+"_upgraded",self);
                 break;
                 case "IX":
                     for(z=0;z<level._IXUpgNames.size;z++)
