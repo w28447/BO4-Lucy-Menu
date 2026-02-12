@@ -205,7 +205,7 @@ ForceHostToggle()
 
 LunaWolf()
 {
-    spawnactor(#"hash_3f174b9bcc408705", self.origin, self.angles, "wolf_protector", 1);
+    spawnactor(#"spawner_zm_wolf_ally", self.origin, self.angles, "wolf_protector", 1);
 }
 
 SaveLocation(Val)

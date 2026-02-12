@@ -72,6 +72,6 @@ selfInstaKill()
 
 RoundEdit(value)//Renamed cause round999 wasn't really a good name for it now its on a slider.
 {
-    namespace_a28acff3::set_round_number(value);
+    zm_round_logic::set_round_number(value);
     self thread KillAllZombies();
 }

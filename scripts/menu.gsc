@@ -38,7 +38,7 @@ runMenuIndex(menu)
                     }
                 }
             }
-        break;
+            break;
         case "Personal Menu":
             self addMenu(menu, "Personal Menu");
                 self addOptBool(self.godmode, "God Mode", &Godmode);
@@ -55,12 +55,12 @@ runMenuIndex(menu)
                 self addOpt("Perk Selection", &newMenu, "Perk Selection");
                 self addOpt("Score Menu", &newMenu, "Score Menu");
                 self addOpt("Open All Doors", &BO4_OpenAllDoors);
-        break;
+            break;
         case "Perk Selection":
             self addMenu(menu, "Perk Selection");
-                for(i = 0; i < level._PerkStrings.size; i++)
-                    self addOpt(level._PerkNames[i], &GivePlayerPerk, level._PerkStrings[i], self);
-        break;
+            for(i = 0; i < level._PerkStrings.size; i++)
+                self addOpt(level._PerkNames[i], &GivePlayerPerk, level._PerkStrings[i], self);
+            break;
         case "Score Menu":
             self addMenu(menu, "Score");
                 self addOptBool(self.onlyIncrease, "Score Only Increases", &ScoreOnlyIncreases);
@@ -68,45 +68,40 @@ runMenuIndex(menu)
                 self addOpt("Take Points", &PlayerTakeScore, 4000000);
                 self addOptIncSlider("Add Points", &PlayerGiveScore, 0, 0, 1000000, 10000);
                 self addOptIncSlider("Take Points", &PlayerTakeScore, 0, 0, 1000000, 10000);
-        break;
-
+            break;
         case "Elixir Menu":
             self addMenu(menu, "Elixir Menu");//Should be complete
-            self addOpt("Mega Elixirs", &newMenu, "Mega Elixirs");
-            self addOpt("Legendary Elixirs", &newMenu, "Legendary Elixirs");
-            self addOpt("Rare Elixirs", &newMenu, "Rare Elixirs");
-            self addOpt("Common Elixirs", &newMenu, "Common Elixirs");
-            self addOpt("Classic Elixirs", &newMenu, "Classic Elixirs");
-        break;
+                self addOpt("Mega Elixirs", &newMenu, "Mega Elixirs");
+                self addOpt("Legendary Elixirs", &newMenu, "Legendary Elixirs");
+                self addOpt("Rare Elixirs", &newMenu, "Rare Elixirs");
+                self addOpt("Common Elixirs", &newMenu, "Common Elixirs");
+                self addOpt("Classic Elixirs", &newMenu, "Classic Elixirs");
+            break;
         case "Mega Elixirs":
             self addMenu(menu, "Mega Elixirs");
             for(i = 0; i < level._MegaElixirs.size; i++)
                 self addOpt(constructString(replaceChar(level._MegaElixirs[i], "_", " ")), &GiveElixir, level._MegaTypes[i], "zm_bgb_" + level._MegaElixirs[i]);
-        break;
-
+            break;
         case "Legendary Elixirs":
             self addMenu(menu, "Legendary Elixirs");
             for(i = 0; i < level._LegendaryElixirs.size; i++)
                 self addOpt(constructString(replaceChar(level._LegendaryElixirs[i], "_", " ")), &GiveElixir, level._LegendaryTypes[i], "zm_bgb_" + level._LegendaryElixirs[i]);
-        break;
-
+            break;
         case "Rare Elixirs":
             self addMenu(menu, "Rare Elixirs");
             for(i = 0; i < level._RareElixirs.size; i++)
                 self addOpt(constructString(replaceChar(level._RareElixirs[i], "_", " ")), &GiveElixir, level._RareTypes[i], "zm_bgb_" + level._RareElixirs[i]);
-        break;
-
+            break;
         case "Common Elixirs":
             self addMenu(menu, "Common Elixirs");
             for(i = 0; i < level._CommonElixirs.size; i++)
                 self addOpt(constructString(replaceChar(level._CommonElixirs[i], "_", " ")), &GiveElixir, level._CommonTypes[i], "zm_bgb_" + level._CommonElixirs[i]);
-        break;
-
+            break;
         case "Classic Elixirs":
             self addMenu(menu, "Classic Elixirs");
             for(i = 0; i < level._ClassicElixirs.size; i++)
                 self addOpt(constructString(replaceChar(level._ClassicElixirs[i], "_", " ")), &GiveElixir, level._ClassicTypes[i], "zm_bgb_" + level._ClassicElixirs[i]);
-        break;
+            break;
         case "Map Selection":
             self addMenu(menu, "Map Selection");
                 self addOpt("IX", &ChangeMap, "zm_towers");
@@ -117,7 +112,7 @@ runMenuIndex(menu)
                 self addOpt("Alpha Omega", &ChangeMap, "zm_white");
                 self addOpt("Classified", &ChangeMap, "zm_office");
                 self addOpt("Tag Der Toten", &ChangeMap, "zm_orange");
-        break;
+            break;
         case "Teleport Menu": //Coords, Loc name for iprint
             self addMenu(menu, "Teleport Menu");
             switch(BO4GetMap()){
@@ -199,24 +194,24 @@ runMenuIndex(menu)
                     self addOpt("Secret :D", &BO4newOrigin, (-7432.51, -24841.3, 13.5001), "Secret :D");
                     break;
             }
-        break;
+            break;
         case "Fun Menu":
             self addMenu(menu, "Fun Menu");
-            self addOpt("Clone", &Clone);
-	        self addOpt("HUDDisable", &HUDDisable);    
-            self addOptBool(self.thirdperson, "Third Person", &thirdperson);
-            self addOpt("Play EE Song", &PlayAudioToPlayers, "ee_song");
-            self addOpt("Play EE 2 Song", &PlayAudioToPlayers, "ee_song_2");
-            self addOptBool(self.aimbot, "Aimbot", &bo4_toggleaimbot);
-            self addOptBool(self.TeleGun, "Teleport Gun", &StartTeleGun);
-            self addOptBool(self.HideWeapon, "Hide Gun", &HideGun);
-            self addOptBool(self.Multijump, "Multi Jump", &Multijump);
-            self addOptBool(self.FloatingZombies, "Floating Zombies", &FloatingZombies);
-            self addOptBool(self.ForcingTheHost, "Force Host", &ForceHostToggle); 
-            self addOpt("Spawn Luna Wolf", &LunaWolf);   
-            self addOpt("Save Location", &SaveLocation, 0);
-            self addOpt("Load Location", &SaveLocation, 1);
-        break;
+                self addOpt("Clone", &Clone);
+	            self addOpt("HUDDisable", &HUDDisable);    
+                self addOptBool(self.thirdperson, "Third Person", &thirdperson);
+                self addOpt("Play EE Song", &PlayAudioToPlayers, "ee_song");
+                self addOpt("Play EE 2 Song", &PlayAudioToPlayers, "ee_song_2");
+                self addOptBool(self.aimbot, "Aimbot", &bo4_toggleaimbot);
+                self addOptBool(self.TeleGun, "Teleport Gun", &StartTeleGun);
+                self addOptBool(self.HideWeapon, "Hide Gun", &HideGun);
+                self addOptBool(self.Multijump, "Multi Jump", &Multijump);
+                self addOptBool(self.FloatingZombies, "Floating Zombies", &FloatingZombies);
+                self addOptBool(self.ForcingTheHost, "Force Host", &ForceHostToggle); 
+                self addOpt("Spawn Luna Wolf", &LunaWolf);   
+                self addOpt("Save Location", &SaveLocation, 0);
+                self addOpt("Load Location", &SaveLocation, 1);
+            break;
         case "Lobby Settings":
             self addMenu(menu, "Lobby Settings");
                 self addOptBool(level.BO4NoFallD, "No Fall", &BO4NoFallDam);
@@ -226,21 +221,21 @@ runMenuIndex(menu)
                 self addOpt("Add Bot", &bo4_AddBotsToGame);
                 self addOptBool(self.AntiQuit, "Anti Quit", &AntiQuit);
                 self addOpt("Anti Join", &AntiJoin);
-        break;
+            break;
         case "Weapons and items Menu":
             self addMenu(menu, "Weapon Menu");
-            self addOpt("Normal Weapons and items", &newMenu, "Normal Weapons and items");
-            self addOpt("Upgraded Weapons", &newMenu, "Upgraded Weapons");
-            self addOpt("Bullet Effects Menu", &newMenu, "Bullets Menu");
-            self addOpt("Camo Selector", &newMenu, "Camo Selector");
-            self addOpt("Upgrade Weapon", &UpgradeWeapon);
-            self addOpt("Pack a Punch Effects", &newMenu, "Pack a Punch Effects");
-            self addOpt("Drop Weapon", &DropWeapon);
-            self addOpt("Take All Weapons", &TakeWeapons);
-            self addOpt("Take Current Weapon", &TakeCurrentWeapon);
+                self addOpt("Normal Weapons and items", &newMenu, "Normal Weapons and items");
+                self addOpt("Upgraded Weapons", &newMenu, "Upgraded Weapons");
+                self addOpt("Bullet Effects Menu", &newMenu, "Bullets Menu");
+                self addOpt("Camo Selector", &newMenu, "Camo Selector");
+                self addOpt("Upgrade Weapon", &UpgradeWeapon);
+                self addOpt("Pack a Punch Effects", &newMenu, "Pack a Punch Effects");
+                self addOpt("Drop Weapon", &DropWeapon);
+                self addOpt("Take All Weapons", &TakeWeapons);
+                self addOpt("Take Current Weapon", &TakeCurrentWeapon);
             break;
         case "Specialist Menu":
-        self addMenu(menu, "Specialist Menu");
+            self addMenu(menu, "Specialist Menu");
             switch(BO4GetMap())
             {
                 case "Blood":
@@ -252,7 +247,6 @@ runMenuIndex(menu)
                     self addOpt("Ragnaroks", &GiveClientWeapon, "hero_gravityspikes_t8_lv3", self);
                     self addOpt("Minigun", &GiveClientWeapon, "hero_minigun_t8_lv3", self);
                     break;
-
                 case "Voyage":
                 case "Dead":
                 case "IX":
@@ -263,96 +257,107 @@ runMenuIndex(menu)
                     self addOpt("Viper and Dragon", &GiveClientWeapon, "hero_sword_pistol_lv3", self);
                     break;
             }
-        break;    
+            break;    
         case "Bullets Menu":
-        self addMenu(menu, "Bullets Menu");
-            self addOptBool(self.magicBullets, "Toggle Magic Bullets", &magicbullets);
-            self addOpt("Minigun", &changeBulletType, 0);
-            self addOpt("Ballistic Knife", &changeBulletType, 1);
-            self addOpt("Hellion Salvo", &changeBulletType, 2);
-            if(BO4GetMap() == "Blood" || BO4GetMap() == "AO" || BO4GetMap() == "Tag" || BO4GetMap() == "Classified"){
-            self addOpt("Ray Gun", &changeBulletType, 3);
-        }    
-        break;
+            self addMenu(menu, "Bullets Menu");
+                self addOptBool(self.magicBullets, "Toggle Magic Bullets", &magicbullets);
+                self addOpt("Minigun", &changeBulletType, 0);
+                self addOpt("Ballistic Knife", &changeBulletType, 1);
+                self addOpt("Hellion Salvo", &changeBulletType, 2);
+                if(BO4GetMap() == "Blood" || BO4GetMap() == "AO" || BO4GetMap() == "Tag" || BO4GetMap() == "Classified"){
+                    self addOpt("Ray Gun", &changeBulletType, 3);
+                }    
+            break;
         case "Pack a Punch Effects":
             self addMenu(menu, "Pack a Punch Effects");
-            self addOpt("Brain Rot", &acquireaat, "zm_aat_brain_decay");
-            self addOpt("Fire Burst", &acquireaat, "zm_aat_plasmatic_burst");
-            self addOpt("Kill o Watt", &acquireaat, "zm_aat_kill_o_watt");
-            self addOpt("Cryofreeze", &acquireaat, "zm_aat_frostbite");
-            self addOpt("Remove Effect", &RemoveEff);
-        break;
+                self addOpt("Brain Rot", &acquireaat, "zm_aat_brain_decay");
+                self addOpt("Fire Burst", &acquireaat, "zm_aat_plasmatic_burst");
+                self addOpt("Kill o Watt", &acquireaat, "zm_aat_kill_o_watt");
+                self addOpt("Cryofreeze", &acquireaat, "zm_aat_frostbite");
+                self addOpt("Remove Effect", &RemoveEff);
+            break;
         case "Camo Selector":
-        self addMenu(menu, "Camo Selector");
-            for(a=0;a<96;a++)
-                    self addOpt("Camo: " + (a + 1), &bo4_CamoGiver, a);
-        break;
+            self addMenu(menu, "Camo Selector");
+            for(a=0;a<399;a++)
+                    self addOpt("Camo: " + (a + 1), &bo4_CamoGiver, a);//gamedata\weapons\common\camooptions.csv 394 TdT pap como end?
+            break;
         case "Normal Weapons and items":
             self addMenu(menu, "Normal Weapons");
             for(z=0;z<level._WeaponCategs.size;z++)
                 self addOpt(level._WeaponCategs[z], &newMenu, level._WeaponCategs2[z]);
-        break;
+            break;
         case "Assault Rifles":
             self addMenu(menu, "Assault Rifles");
             for(t=0;t<level._AssaultNames.size;t++)
                 self addOpt("Give "+level._AssaultNames[t], &GiveClientWeapon, level._AssaultStrings[t], self);
-        break;
+            break;
         case "SMG":
             self addMenu(menu, "Submachine Guns");
             for(t=0;t<level._SMGNames.size;t++)
                 self addOpt("Give "+level._SMGNames[t], &GiveClientWeapon, level._SMGStrings[t], self);
-        break;
+            break;
         case "Tactical Rifles":
             self addMenu(menu, "Tactical Rifles");
             for(t=0;t<level._TacticalNames.size;t++)
                 self addOpt("Give "+level._TacticalNames[t], &GiveClientWeapon, level._TacticalStrings[t], self);
-        break;
+            break;
         case "LMG":
             self addMenu(menu, "Light Machine Guns");
             for(t=0;t<level._LMGNames.size;t++)
                 self addOpt("Give "+level._LMGNames[t], &GiveClientWeapon, level._LMGStrings[t], self);
-        break;
+            break;
         case "Sniper Rifles":
             self addMenu(menu, "Sniper Rifles");
             for(t=0;t<level._SniperNames.size;t++)
                 self addOpt(level._SniperNames[t], &GiveClientWeapon, level._SniperStrings[t], self);
-        break;
+            break;
         case "Pistols":
             self addMenu(menu, "Pistols");
             for(t = 0; t < level._PistolStrings.size; t++)
                 self addOpt("Give " + level._PistolNames[t], &GiveClientWeapon, level._PistolStrings[t], self);
-        break;
+            break;
         case "Shotguns":
             self addMenu(menu, "Shotguns");
             for(t = 0; t < level._ShotgunStrings.size; t++)
                 self addOpt("Give " + level._ShotgunNames[t], &GiveClientWeapon, level._ShotgunStrings[t], self);
-        break;
+            break;
         case "Special Weapons":
             self addMenu(menu, "Special Weapons");
-             for(t = 0; t < level._SpecialStrings.size; t++)
+            for(t = 0; t < level._SpecialStrings.size; t++)
                 self addOpt(level._SpecialNames[t], &GiveClientWeapon, level._SpecialStrings[t], self);
-                            switch(BO4GetMap())
+            switch(BO4GetMap())
             {
                 case "Blood":
                 case "AO":
                 case "Tag":
-                case "Classified": for(r=0;r<level._MapWeapsAether.size;r++) self addOpt(level._MapWeapsAetherNames[r],&GiveClientWeapon,level._MapWeapsAether[r],self);
+                case "Classified":
+                    for(r=0;r<level._MapWeapsAether.size;r++) self addOpt(level._MapWeapsAetherNames[r],&GiveClientWeapon,level._MapWeapsAether[r],self);
                     break;
                 case "Voyage":
                 case "Dead":
                 case "IX":
-                case "AE": self addOpt("Homunculus", &GiveClientWeapon, "homunculus", self);//Credit SirCryptic / Abomination Unofficial
+                case "AE":
+                    self addOpt("Homunculus", &GiveClientWeapon, "homunculus", self);//Credit SirCryptic / Abomination Unofficial
                 break;
-                }
-        break;
+            }
+            break;
         case "Map Specific Weapons and items":
             self addMenu(menu, "Map Specific Weapons and items");
             switch(BO4GetMap()){
+                case "Blood": for(t=0;t<level._BloodWeapNames.size;t++)
+                    self addOpt(level._BloodWeapNames[t], &GiveClientWeapon, level._BloodWeaps[t],self);
+                    break;
+                case "Classified": for(t=0;t<level._ClassWeapNames.size;t++)
+                    self addOpt(level._ClassWeapNames[t], &GiveClientWeapon, level._ClassWeaps[t], self);
+                    break;
+                case "Tag": for(t=0;t<level._TagWeapNames.size;t++)
+                    self addOpt(level._TagWeapNames[t], &GiveClientWeapon, level._TagWeaps[t], self);
+                    break;
+                case "AO": for(t=0;t<level._AOWeapNames.size;t++)
+                    self addOpt(level._AOWeapNames[t], &GiveClientWeapon, level._AOWeaps[t], self);
+                    break;
                 case "Voyage": for(t=0;t<level._VoyageWeapNames.size;t++)
                     self addOpt(level._VoyageWeapNames[t], &GiveClientWeapon,level._VoyageWeaps[t],self);
-                    break;
-                case "Blood": for(t=0;t<level._BloodWeaps.size;t++)
-                    self addOpt(level._BloodWeapNames[t], &GiveClientWeapon, level._BloodWeaps[t],self);
                     break;
                 case "IX": for(t=0;t<level._IXWeapNames.size;t++)
                     self addOpt(level._IXWeapNames[t], &GiveClientWeapon, level._IXWeaps[t], self);
@@ -363,157 +368,143 @@ runMenuIndex(menu)
                 case "AE": for(t=0;t<level._AEWeapNames.size;t++)
                     self addOpt(level._AEWeapNames[t], &GiveClientWeapon, level._AEWeaps[t], self);
                     break;
-                case "Tag": for(t=0;t<level._TagWeapNames.size;t++)
-                    self addOpt(level._TagWeapNames[t], &GiveClientWeapon, level._TagWeaps[t], self);
-                    break;
-                case "AO": for(t=0;t<level._AOWeapNames.size;t++)
-                    self addOpt(level._AOWeapNames[t], &GiveClientWeapon, level._AOWeaps[t], self);
-                    break;
-                case "Classified": for(t=0;t<level._ClassWeapNames.size;t++)
-                    self addOpt(level._ClassWeapNames[t], &GiveClientWeapon, level._ClassWeaps[t], self);
-                    break;
             }
-        break;
+            break;
         case "Upgraded Weapons":
             self addMenu(menu, "Upgraded Weapons");
             for(t=0;t<level._WeaponCategs.size - 1;t++)
                 self addOpt(level._WeaponCategs[t], &newMenu, level._WeaponCategs3[t]);
-        break;
+            break;
         case "Upgraded AR":
             self addMenu(menu, "Upgraded Assault Rifles");
-            for(t=0;t<level._UpgAssaultNames.size;t++)
-                self addOpt("Give "+level._UpgAssaultNames[t], &GiveClientWeapon, level._AssaultStrings[t]+"_upgraded", self);
-        break;
+            for(t=0;t<level._AssaultUpgNames.size;t++)
+                self addOpt("Give "+level._AssaultUpgNames[t], &GiveClientWeapon, level._AssaultStrings[t]+"_upgraded", self);
+            break;
         case "Upgraded SMG":
             self addMenu(menu, "Upgraded SMGs");
-            for(z=0;z<level._UpgSMGNames.size;z++)
-                self addOpt(level._UpgSMGNames[z], &GiveClientWeapon, level._SMGStrings[z]+"_upgraded", self);
-        break;
-            
+            for(z=0;z<level._SMGUpgNames.size;z++)
+                self addOpt(level._SMGUpgNames[z], &GiveClientWeapon, level._SMGStrings[z]+"_upgraded", self);
+            break;
         case "Upgraded TR":
             self addMenu(menu, "Upgraded Tactical Rifles");
-            for(z=0;z<level._UpgTacticalNames.size;z++)
-                self addOpt(level._UpgTacticalNames[z], &GiveClientWeapon, level._TacticalStrings[z]+"_upgraded", self);
-        break;
+            for(z=0;z<level._TacticalUpgNames.size;z++)
+                self addOpt(level._TacticalUpgNames[z], &GiveClientWeapon, level._TacticalStrings[z]+"_upgraded", self);
+            break;
         case "Upgraded LMG":
             self addMenu(menu, "Upgraded LMGs");
-            for(z=0;z<level._UpgLMGNames.size;z++)
-                self addOpt(level._UpgLMGNames[z], &GiveClientWeapon, level._LMGStrings[z]+"_upgraded", self);
-        break;
+            for(z=0;z<level._LMGUpgNames.size;z++)
+                self addOpt(level._LMGUpgNames[z], &GiveClientWeapon, level._LMGStrings[z]+"_upgraded", self);
+            break;
         case "Upgraded SR":
             self addMenu(menu, "Upgraded Snipers");
-            for(t=0;t<level._UpgSniperNames.size;t++)
-                self addOpt(level._UpgSniperNames[t], &GiveClientWeapon, level._SniperStrings[t]+"_upgraded", self);
-        break;
+            for(t=0;t<level._SniperUpgNames.size;t++)
+                self addOpt(level._SniperUpgNames[t], &GiveClientWeapon, level._SniperStrings[t]+"_upgraded", self);
+            break;
         case "Upgraded Pistols":
             self addMenu(menu, "Upgraded Pistols");
-           for(z=0;z<level._UpgPistolNames.size;z++)
-                self addOpt(level._UpgPistolNames[z], &GiveClientWeapon, level._PistolStrings[z]+"_upgraded", self);
-        break;
+           for(z=0;z<level._PistolUpgNames.size;z++)
+                self addOpt(level._PistolUpgNames[z], &GiveClientWeapon, level._PistolStrings[z]+"_upgraded", self);
+            break;
         case "Upgraded Shotguns":
             self addMenu(menu, "Upgraded Shotguns");
-           for(z=0;z<level._UpgShotgunNames.size;z++)
-                self addOpt(level._UpgShotgunNames[z], &GiveClientWeapon, level._ShotgunStrings[z]+"_upgraded", self);
-        break;
+            for(z=0;z<level._ShotgunUpgNames.size;z++)
+                self addOpt(level._ShotgunUpgNames[z], &GiveClientWeapon, level._ShotgunStrings[z]+"_upgraded", self);
+            break;
         case "Upgraded Specials":
             self addMenu(menu, "Upgraded Specials");
-            for(t=0;t<level._UpgSpecialNames.size;t++)
-                self addOpt(level._UpgSpecialNames[t],&GiveClientWeapon,level._UpgSpecialStrings[t],self);
+            for(t=0;t<level._SpecialUpgNames.size;t++)
+                self addOpt(level._SpecialUpgNames[t],&GiveClientWeapon,level._SpecialUpgStrings[t],self);
             switch(BO4GetMap()){
+                case "Blood":
+                    for(z=0;z<level._BloodUpgWeapNames.size;z++)
+                        self addOpt(level._BloodUpgWeapNames[z], &GiveClientWeapon, level._BloodUpgWeaps[z], self);
+                    for(r=0;r<level._MapUpgWeapsAetherNames.size;r++)
+                        self addOpt(level._MapUpgWeapsAetherNames[r],&GiveClientWeapon,level._MapWeapsAether[r]+"_upgraded",self);
+                    break;
+                case "Classified": 
+                    for(z=0;z<level._ClassUpgWeapNames.size - 1;z++)
+                        self addOpt(level._ClassUpgWeapNames[z], &GiveClientWeapon, level._ClassWeaps[z]+"_upgraded", self);
+                    for(r=0;r<level._MapUpgWeapsAetherNames.size;r++)
+                        self addOpt(level._MapUpgWeapsAetherNames[r],&GiveClientWeapon,level._MapWeapsAether[r]+"_upgraded",self);
+                    break;
+                case "AO":
+                    for(z=0;z<level._AOWeapNames.size - 2;z++)
+                        self addOpt(level._AOWeapNames[z],&GiveClientWeapon, level._AOUpgWeaps[z],self);
+                    for(r=0;r<level._MapUpgWeapsAetherNames.size;r++)
+                        self addOpt(level._MapUpgWeapsAetherNames[r],&GiveClientWeapon,level._MapWeapsAether[r]+"_upgraded",self);
+                    break;
+                case "Tag":
+                    for(z=0;z<level._TagUpgWeapNames.size;z++)
+                        self addOpt(level._TagUpgWeapNames[z], &GiveClientWeapon, level._TagUpgWeaps[z], self);
+                    for(r=0;r<level._MapUpgWeapsAetherNames.size;r++)
+                        self addOpt(level._MapUpgWeapsAetherNames[r],&GiveClientWeapon,level._MapWeapsAether[r]+"_upgraded",self);
+                    break;
                 case "Voyage":
-                    for(z=0;z<level._VoyageWeaps.size - 1;z++)
+                    for(z=0;z<level._VoyageWeapNames.size - 1;z++)
                         self addOpt(level._VoyageWeapNames[z], &GiveClientWeapon, level._VoyageWeaps[z]+"_upgraded", self);
                     self addOpt("Svalinn Guard", &GiveSvalinnGuard);
-                break;
-                case "Blood":
-                    for(z=0;z<level._UpgBloodNames.size;z++)
-                        self addOpt(level._UpgBloodNames[z], &GiveClientWeapon, level._UpgBloodWeaps[z], self);
-                    for(r=0;r<level._MapWeapsAether.size - 1;r++) 
-                        self addOpt(level._UpgMapWeapsAetherNames[r],&GiveClientWeapon,level._MapWeapsAether[r]+"_upgraded",self);
-                break;
-                case "AE":
-                    for(z=0;z<level._AEWeaps.size - 2;z++)
-                        self addOpt(level._AEWeapNames[z], &GiveClientWeapon, level._AEWeaps[z]+"_upgraded",self);
-                break;
-                case "Tag":
-                    for(z=0;z<level._UpgTagWeapNames.size;z++)
-                        self addOpt(level._UpgTagWeapNames[z], &GiveClientWeapon, level._UpgTagWeaps[z], self);
-                    for(r=0;r<level._MapWeapsAether.size - 1;r++) 
-                        self addOpt(level._UpgMapWeapsAetherNames[r],&GiveClientWeapon,level._MapWeapsAether[r]+"_upgraded",self);
-                break;
-                case "AO":
-                    for(z=0;z<level._UpgAOWeaps.size - 2;z++)
-                        self addOpt(level._AOWeapNames[z],&GiveClientWeapon, level._UpgAOWeaps[z],self);
-                    for(r=0;r<level._MapWeapsAether.size - 1;r++) 
-                        self addOpt(level._UpgMapWeapsAetherNames[r],&GiveClientWeapon,level._MapWeapsAether[r]+"_upgraded",self);
-                break;
-                case "Classified": 
-                    for(z=0;z<level._UpgClassWeaps.size;z++)
-                        self addOpt(level._UpgClassWeapNames[z], &GiveClientWeapon, level._UpgClassWeaps[z]+"_upgraded", self);
-                    for(r=0;r<level._MapWeapsAether.size - 1;r++) 
-                        self addOpt(level._UpgMapWeapsAetherNames[r],&GiveClientWeapon,level._MapWeapsAether[r]+"_upgraded",self);
-                break;
+                    break;
                 case "IX":
-                    for(z=0;z<level._IXUpgNames.size;z++)
-                        self addOpt(level._IXUpgNames[z], &GiveClientWeapon, level._IXWeaps[z]+"_upgraded", self);
-                break;
+                    for(z=0;z<level._IXUpgWeapNames.size;z++)
+                        self addOpt(level._IXUpgWeapNames[z], &GiveClientWeapon, level._IXWeaps[z]+"_upgraded", self);
+                    break;
                 case "Dead":
-                    for(z=0;z<level._DeadUpgWeaps.size;z++)
-                        self addOpt(level._DeadUpgNames[z], &GiveClientWeapon, level._DeadUpgWeaps[z], self);
-                break;
+                    for(z=0;z<level._DeadUpgWeapNames.size;z++)
+                        self addOpt(level._DeadUpgWeapNames[z], &GiveClientWeapon, level._DeadUpgWeaps[z], self);
+                    break;
+                case "AE":
+                    for(z=0;z<level._AEWeapNames.size - 2;z++)
+                        self addOpt(level._AEWeapNames[z], &GiveClientWeapon, level._AEWeaps[z]+"_upgraded",self);
+                    break;
             }
-        break;
+            break;
         case "Powerups Menu":
             self addMenu(menu, "Powerups");
             if(BO4GetMap() == "Blood"){self addOpt("Zombie Blood", &GivePowerup, "zombie_blood");}
             for(t = 0; t < level._PowerupStrings.size; t++)
                 self addOpt(constructString(replaceChar(level._PowerupStrings[t], "_", " ")), &GivePowerup, level._PowerupStrings[t]);
             break;
-
         case "Zombie Menu":
             self addMenu(menu, "Zombie Menu");
-            self addOpt("Kill All Zombies", &KillAllZombies);
-            self addOptIncSlider("Edit Round: ", &RoundEdit, 0, 0, 9999, 1);
-            self addOptBool(self.ZombiePos, "Teleport to Crosshair Loop", &StartZombiePosistion);
-            self addOptBool(self.NoTarg, "No Target", &notarget);
-            self addOptBool(self.personal_instakill, "Insta Kill", &selfInstaKill);
-        break;
-
+                self addOpt("Kill All Zombies", &KillAllZombies);
+                self addOptIncSlider("Edit Round: ", &RoundEdit, 0, 0, 9999, 1);
+                self addOptBool(self.ZombiePos, "Teleport to Crosshair Loop", &StartZombiePosistion);
+                self addOptBool(self.NoTarg, "No Target", &notarget);
+                self addOptBool(self.personal_instakill, "Insta Kill", &selfInstaKill);
+            break;
         case "Mystery Box Menu":
             self addMenu(menu, "Mystery Box");
-            self addOpt("Price", &newMenu, "Price Menu");
-            self addOpt("Teleport To Chest", &TpToChest);
-            self addOpt("Freeze Box Position", &BO4FreezeBox);
-            self addOpt("Show All Mystery Boxes", &ShowAllBoxes);
-        break;
-
+                self addOpt("Price", &newMenu, "Price Menu");
+                self addOpt("Teleport To Chest", &TpToChest);
+                self addOpt("Freeze Box Position", &BO4FreezeBox);
+                self addOpt("Show All Mystery Boxes", &ShowAllBoxes);
+            break;
         case "Price Menu":
             self addMenu(menu, "Price Menu");
-            self addOpt("Default Box Price", &BoxPrice, 950);
-            self addOpt("Free Box Price", &BoxPrice, 0);
-            self addOpt("10 Box Price", &BoxPrice, 10);
-            self addOpt("69 Box Price", &BoxPrice, 69);
-            self addOpt("420 Box Price", &BoxPrice, 420);
-            self addOpt("-1000 Box Price", &BoxPrice, -1000);
-            self addOpt("Random Box Price", &BoxPrice, randomIntRange(0, 999999));
-        break;
-
+                self addOpt("Default Box Price", &BoxPrice, 950);
+                self addOpt("Free Box Price", &BoxPrice, 0);
+                self addOpt("10 Box Price", &BoxPrice, 10);
+                self addOpt("69 Box Price", &BoxPrice, 69);
+                self addOpt("420 Box Price", &BoxPrice, 420);
+                self addOpt("-1000 Box Price", &BoxPrice, -1000);
+                self addOpt("Random Box Price", &BoxPrice, randomIntRange(0, 999999));
+            break;
         case "Account Menu":
             self addMenu(menu,"Rank Menu");
-            self addOpt("Max Level", &BO4Level55, self);
-            self addOpt("Level 1000", &BO4Level1000, self);
-            self addOptBool(self.PlasmaLoop, "Plasma Loop", &PlasmaLoopplayer, self);
-            self addOpt("Complete Active Contracts", &CompleteActiveContracts, self);
-            self addOpt("Unlock All", &bo4_UnlockAll, self);
-            self addOpt("Max Weapon Levels", &bo4_MaxLevels, self);
-            self addOpt("Give Achievements", &Achievements, self);
-            self addOpt("Stats Menu", &newMenu, "Stats Menu");
-        break;
+                self addOpt("Max Level", &BO4Level55, self);
+                self addOpt("Level 1000", &BO4Level1000, self);
+                self addOptBool(self.PlasmaLoop, "Plasma Loop", &PlasmaLoopplayer, self);
+                self addOpt("Complete Active Contracts", &CompleteActiveContracts, self);
+                self addOpt("Unlock All", &bo4_UnlockAll, self);
+                self addOpt("Max Weapon Levels", &bo4_MaxLevels, self);
+                self addOpt("Give Achievements", &Achievements, self);
+                self addOpt("Stats Menu", &newMenu, "Stats Menu");
+            break;
         case "Stats Menu":
             self addMenu(menu,"Stats Menu");
             for(t=0;t<level._StatOpts.size;t++)
                 self addOptIncSlider(level._StatOpts[t], &StatEditor, 0,0,10000,100,t);
-        break;
+            break;
         case "AllClient":
             self addMenu(menu, "All Client Options");
                 self addOpt("All God Mode", &ClientFuncs, 0, undefined);
@@ -521,12 +512,12 @@ runMenuIndex(menu)
                 self addOpt("All Max Points", &ClientFuncs, 2, undefined);
                 self addOpt("Give Everyone All Perks", &ClientFuncs, 3, undefined);
                 self addOptIncSlider("Self Revives", &SetSelfRevives, 0, 0, 125, 5);
-        break;
+            break;
         case "GameModes":
             self addMenu(menu, "Game Modes");
                 self addOpt("All The Weapons", &GameModeHandler, "All The Weapons");
                 self addOpt("Gun Game", &GameModeHandler, "Gun Game");
-        break;
+            break;
         case "Host Menu":
             self addMenu(menu, "Host Menu");
                 self addOptBool(level.Modvars, "Toggle ModVars", &ModvarTest);
@@ -539,13 +530,13 @@ runMenuIndex(menu)
             break;
         case "Players":
             self addMenu(menu, "Players");
-                foreach(player in level.players)
-                {
-                    if(!isDefined(player.playerSetting["verification"]))
-                        player.playerSetting["verification"] = level.MenuStatus[level.AutoVerify];
-                    
-                    self addOpt("[^5" + player.playerSetting["verification"] + "^6]" + player getName(), &newMenu, "Options " + player GetEntityNumber());
-                }
+            foreach(player in level.players)
+            {
+                if(!isDefined(player.playerSetting["verification"]))
+                    player.playerSetting["verification"] = level.MenuStatus[level.AutoVerify];
+                
+                self addOpt("[^5" + player.playerSetting["verification"] + "^6]" + player getName(), &newMenu, "Options " + player GetEntityNumber());
+            }
             break;
         default:
             foundplayer = false;

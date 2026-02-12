@@ -161,7 +161,7 @@ bo4_UnlockAll(player)
                             player addweaponstat(weap.weapon, #"crawlerkills", 5000);//Crawlers
                             player addweaponstat(weap.weapon, #"instakills", 5000);//Instakill
                             player addweaponstat(weap.weapon, #"hash_704097a2cc8e63e5", 5000);//Kills_loaded
-                            player addweaponstat(weap.weapon, #"hash_657e22dcdd18da77", 5000);//Pop Shocks Challenge
+                            player addweaponstat(weap.weapon, #"popshockkills", 5000);//Pop Shocks Challenge
                             wait 0.01;
                         }
                     }
