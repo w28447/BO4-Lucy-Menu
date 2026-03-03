@@ -253,7 +253,10 @@ GetSelfRes()//Credit TheUnknownCod3r / MrFawkes1337
 
 BO4Rev()
 {
-    self thread zm_laststand::auto_revive(self, 0, 0);
+    if ( isdefined( self.laststand ) && self.laststand )
+    {
+        self thread zm_laststand::auto_revive(self, 0, 0);
+    }
 }
 
 GiveAllPerks()

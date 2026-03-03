@@ -467,7 +467,7 @@ runMenuIndex(menu)
         case "Zombie Menu":
             self addMenu(menu, "Zombie Menu");
                 self addOpt("Kill All Zombies", &KillAllZombies);
-                self addOptIncSlider("Edit Round: ", &RoundEdit, 0, 0, 9999, 1);
+                self addOptIncSlider("Edit Round: ", &RoundEdit, 1, 1, 935, 1);
                 self addOptBool(self.ZombiePos, "Teleport to Crosshair Loop", &StartZombiePosistion);
                 self addOptBool(self.NoTarg, "No Target", &notarget);
                 self addOptBool(self.personal_instakill, "Insta Kill", &selfInstaKill);
