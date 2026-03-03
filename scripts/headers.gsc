@@ -36,6 +36,7 @@
 #include scripts\zm_common\zm_round_logic.gsc;
 #include scripts\zm_common\zm_score.gsc;
 #include scripts\zm_common\zm_stats.gsc;
+#include scripts\zm_common\zm_ui_inventory;
 #include scripts\zm_common\zm_utility.gsc;
 #include scripts\zm_common\zm_weapons.gsc;
 #include scripts\zm_common\gametypes\dev.gsc;

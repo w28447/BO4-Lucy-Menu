@@ -19,6 +19,10 @@ GiveClientWeapon(WeaponName, player)
         player iPrintLn("You received "+WeaponName);
         return;
     }
+    if(zm_loadout::is_tactical_grenade(getweapon(WeaponName)) && isDefined(player._gadgets_player[1]))
+    {
+        player takeweapon(player._gadgets_player[1]);
+    }
     player zm_weapons::give_build_kit_weapon(getweapon(WeaponName));
     player switchtoweapon(getweapon(WeaponName));
     wait .1;

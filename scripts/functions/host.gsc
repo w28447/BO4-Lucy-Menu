@@ -97,6 +97,26 @@ ActivatePAP(mapname)
             level flag::set(#"pap_quest_completed");
             self iPrintLnBold("Not Added Yet");
             break;
+        case "zm_mansion":
+            level flag::set( "crystal_main_hall" );
+            level flag::set( "crystal_library" );
+            level flag::set( "crystal_greenhouse" );
+            level zm_ui_inventory::function_7df6bb60( #"pap_1", 1 );
+            level zm_ui_inventory::function_7df6bb60( #"pap_2", 1 );
+            level zm_ui_inventory::function_7df6bb60( #"pap_3", 1 );
+            s_scene = struct::get( #"p8_fxanim_zm_man_ooze_clump_bundle", "scriptbundlename" );
+            a_shots = s_scene.scenes[ 0 ].var_5a2219f0;
+            for ( i = 0; i < 3 ; i++ ){
+                str_shot = a_shots[ s_scene.scene_played.size ];
+                level thread scene::play( #"p8_fxanim_zm_man_ooze_clump_bundle", str_shot );
+            }
+            level flag::set( "crystal_main_hall_key" );
+            level flag::set( "crystal_library_key" );
+            level flag::set( "crystal_greenhouse_key" );
+            level flag::set( "unlock_pap_gate" );
+            s_pap_gate_loc = struct::get( "pap_gate_loc" );
+            zm_unitrigger::unregister_unitrigger( s_pap_gate_loc.var_47323b73 );
+            break;
     }
 }
 

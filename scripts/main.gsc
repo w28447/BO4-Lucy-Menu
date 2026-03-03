@@ -53,6 +53,8 @@ InitializeVarsPrecaches()
     level._SpecialNames   = StrTok("Give Hellion Salvo,Give Minigun,Ballistic Knife,Crossbow,Bowie Knife", ",");
     level._SpecialUpgStrings = StrTok("launcher_standard_t8_upgraded,special_ballisticknife_t8_dw_upgraded,special_crossbow_t8_upgraded", ",");
     level._SpecialUpgNames = StrTok("Zitros Orbital Arbalest,TheKrauss Refibrillator++,Minos Zeal", ",");
+    level._gadgetStrings = StrTok("eq_frag_grenade,eq_acid_bomb,claymore,eq_wraith_fire,mini_turret", ",");
+    level._gadgetNames = StrTok("frag,acid bomb,claymore,wraith fire,mini turret", ",");
     level._BloodWeaps = StrTok("ww_blundergat_t8,ww_blundergat_fire_t8,ww_blundergat_acid_t8,spoon_alcatraz,spork_alcatraz,tomahawk_t8,zhield_spectral_dw",",");
     level._BloodWeapNames = StrTok("Blundergat,Magmagat,AcidGat,Spoon,Golden Spork,Hells Retriever,Spectral Shield",",");
     level._BloodUpgWeaps = StrTok("ww_blundergat_fire_t8_upgraded,ww_blundergat_acid_t8_upgraded,ww_blundergat_t8_upgraded,tomahawk_t8_upgraded,spknifeork,golden_knife,zhield_spectral_dw_upgraded,ww_blundergat_fire_t8_unfinished", ",");
